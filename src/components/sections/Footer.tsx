@@ -26,7 +26,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-4">Founders</h3>
             <ul className="flex flex-col gap-2 md:text-right">
               <li className="font-medium text-foreground">Chaudhary Abdul Moiz</li>
-              <li className="font-medium text-foreground">Raiha Tufail Chaudahry</li>
+              <li className="font-medium text-foreground">Raiha Tufail Chaudhary</li>
             </ul>
           </div>
         </div>
