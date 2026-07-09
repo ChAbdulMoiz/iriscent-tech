@@ -3,9 +3,8 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
-// Use environment variables if they exist, otherwise use standard local fallbacks
-const port = Number(process.env.PORT) || 5173;
-const basePath = process.env.BASE_PATH || '/';
+// Hardcoding the base path for GitHub Pages to ensure reliability
+const basePath = '/iriscent-tech/';
 
 export default defineConfig({
   base: basePath,
@@ -16,7 +15,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, 'src'),
-      '@assets': path.resolve(import.meta.dirname, 'public'), // Safeguard for local asset pathing
+      '@assets': path.resolve(import.meta.dirname, 'public'),
     },
     dedupe: ['react', 'react-dom'],
   },
@@ -26,14 +25,14 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    port,
+    port: Number(process.env.PORT) || 5173,
     host: '0.0.0.0',
     fs: {
-      strict: false, // Allows flexible local asset loading without permission errors
+      strict: false,
     },
   },
   preview: {
-    port,
+    port: Number(process.env.PORT) || 5173,
     host: '0.0.0.0',
   },
 });
