@@ -87,7 +87,7 @@ export function StartProject() {
 
               {/* Founder: REPLACE THIS EMAIL WITH YOUR ACTUAL EMAIL ADDRESS */}
               <form 
-                action="https://formsubmit.co/owner@example.com" 
+                action="https://formsubmit.co/moiz04697@gmail.com" 
                 method="POST"
                 className="flex flex-col gap-6"
               >

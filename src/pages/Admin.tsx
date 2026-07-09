@@ -108,7 +108,7 @@ export default function Admin() {
                 <ol className="text-sm text-foreground flex flex-col gap-3 list-decimal list-inside">
                   <li>Open <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono">src/components/sections/StartProject.tsx</code></li>
                   <li>Locate the <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono">action</code> attribute on the form</li>
-                  <li>Replace <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono">owner@example.com</code> with your actual email</li>
+                  <li>Replace <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono">moiz04697@gmail.com</code> with your actual email</li>
                   <li>Approve the first test email sent by FormSubmit</li>
                 </ol>
               </div>
