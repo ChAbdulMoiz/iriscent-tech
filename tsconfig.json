@@ -21,10 +21,13 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
 
-    "types": ["node", "vite/client"],
+    /* Path Mapping */
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    
+    "types": ["node", "vite/client"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "dist", "**/*.test.ts"]
