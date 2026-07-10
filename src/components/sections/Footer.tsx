@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CloudShape } from '@/components/ui/CloudShape';
 
 export function Footer() {
   // Floating animation configuration matching the theme pacing
@@ -9,68 +8,77 @@ export function Footer() {
     transition: { duration, repeat: Infinity, ease: "easeInOut", delay }
   });
 
-  return (
-    <footer className="relative bg-background pt-32 pb-12 overflow-hidden border-t border-border/50">
-      
-      {/* 🌟 Background Ambient Orb Layer (Mix of Light Purple and Pink matching the Hero center) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[30vw] rounded-full blur-[100px] opacity-40 bg-gradient-to-r from-primary/30 via-accent/40 to-secondary/20 pointer-events-none z-0" />
+  // Reusable raw SVG cloud outline path
+  const CloudOutline = () => (
+    <svg viewBox="0 0 100 60" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <path 
+        d="M 20,45 A 15,15 0 0,1 25,16 A 22,22 0 0,1 65,15 A 18,18 0 0,1 83,30 A 15,15 0 0,1 80,45 Z" 
+        fill="none" 
+        stroke="url(#footer-rainbow-gradient)" 
+        strokeWidth="1.5" 
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 
-      {/* Decorative tiny clouds - Transparent with a Rainbow Outline */}
-      <div className="absolute top-0 left-0 w-full h-32 pointer-events-none overflow-hidden flex justify-between opacity-60 z-0">
+  return (
+    /* 🌟 CHANGED: Set background style to match your exact soft pastel lavender/pink gradient image */
+    <footer 
+      className="relative pt-32 pb-12 overflow-hidden border-t border-border/40 text-slate-900"
+      style={{
+        background: 'linear-gradient(135deg, #f9f1f6 0%, #f0ebf4 50%, #eae7f0 100%)'
+      }}
+    >
+      
+      {/* Decorative tiny clouds - Transparent with a crisp Rainbow Outline */}
+      <div className="absolute top-0 left-0 w-full h-32 pointer-events-none overflow-hidden flex justify-between opacity-70 z-0">
         
         {/* Left Side Transparent Rainbow Cloud */}
         <motion.div 
-          className="w-[300px] -translate-x-1/2 -translate-y-1/2"
+          className="w-[280px] h-[180px] -translate-x-1/4 -translate-y-1/4 blur-[0.5px]"
           {...floatAnimation(6, -8, 0)}
         >
-          <CloudShape 
-            fill="none" 
-            stroke="url(#footer-rainbow-gradient)" 
-            strokeWidth={2} 
-            className="w-full h-full" 
-          />
+          <CloudOutline />
         </motion.div>
         
         {/* Right Side Transparent Rainbow Cloud */}
         <motion.div 
-          className="w-[400px] translate-x-1/3 -translate-y-1/3"
+          className="w-[360px] h-[220px] translate-x-1/4 -translate-y-1/3 blur-[0.5px]"
           {...floatAnimation(7, 10, 1)}
         >
-          <CloudShape 
-            fill="none" 
-            stroke="url(#footer-rainbow-gradient)" 
-            strokeWidth={2} 
-            className="w-full h-full" 
-          />
+          <CloudOutline />
         </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-4">
               Iriscent <span className="text-gradient">Tech</span>
             </h2>
-            <p className="text-muted-foreground max-w-sm">
+            {/* 🌟 CHANGED: Set to text-slate-600 for sharp, beautiful readability on light background */}
+            <p className="text-slate-600 max-w-sm">
               A precise, capable engineering studio building the foundational systems that power modern businesses.
             </p>
           </div>
           
           <div className="flex flex-col md:items-end justify-end">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-4">Founders</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-500 mb-4">Founders</h3>
             <ul className="flex flex-col gap-2 md:text-right">
-              <li className="font-medium text-foreground">Chaudhary Abdul Moiz</li>
-              <li className="font-medium text-foreground">Raiha Tufail Chaudhary</li>
+              <li className="font-medium text-slate-800">Chaudhary Abdul Moiz</li>
+              <li className="font-medium text-slate-800">Raiha Tufail Chaudhary</li>
             </ul>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border/60 text-sm text-muted-foreground">
+        {/* 🌟 CHANGED: Border color set to match the clean light layout style rules */}
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-slate-300/60 text-sm text-slate-500">
           <p>© {new Date().getFullYear()} Iriscent Technologies. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-primary transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-primary transition-colors">Twitter</a>
-            <a href="#" className="hover:text-primary transition-colors">GitHub</a>
+            <a href="#" className="hover:text-purple-600 transition-colors">LinkedIn</a>
+            <a href="#" className="hover:text-pink-600 transition-colors">Twitter</a>
+            <a href="#" className="hover:text-cyan-600 transition-colors">GitHub</a>
           </div>
         </div>
       </div>
