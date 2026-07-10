@@ -23,7 +23,6 @@ export function Footer() {
   );
 
   return (
-    /* 🌟 CHANGED: Set background style to match your exact soft pastel lavender/pink gradient image */
     <footer 
       className="relative pt-32 pb-12 overflow-hidden border-t border-border/40 text-slate-900"
       style={{
@@ -31,21 +30,21 @@ export function Footer() {
       }}
     >
       
-      {/* Decorative tiny clouds - Transparent with a crisp Rainbow Outline */}
-      <div className="absolute top-0 left-0 w-full h-32 pointer-events-none overflow-hidden flex justify-between opacity-70 z-0">
+      {/* Decorative tiny clouds - Repositioned and scaled down to prevent cropping */}
+      <div className="absolute top-0 left-0 w-full h-40 pointer-events-none overflow-hidden flex justify-between opacity-70 z-0">
         
         {/* Left Side Transparent Rainbow Cloud */}
         <motion.div 
-          className="w-[280px] h-[180px] -translate-x-1/4 -translate-y-1/4 blur-[0.5px]"
-          {...floatAnimation(6, -8, 0)}
+          className="w-[200px] h-[130px] translate-x-4 top-4 relative blur-[0.5px]"
+          {...floatAnimation(6, -6, 0)}
         >
           <CloudOutline />
         </motion.div>
         
         {/* Right Side Transparent Rainbow Cloud */}
         <motion.div 
-          className="w-[360px] h-[220px] translate-x-1/4 -translate-y-1/3 blur-[0.5px]"
-          {...floatAnimation(7, 10, 1)}
+          className="w-[250px] h-[160px] -translate-x-4 top-2 relative blur-[0.5px]"
+          {...floatAnimation(7, 8, 1)}
         >
           <CloudOutline />
         </motion.div>
@@ -57,7 +56,6 @@ export function Footer() {
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-4">
               Iriscent <span className="text-gradient">Tech</span>
             </h2>
-            {/* 🌟 CHANGED: Set to text-slate-600 for sharp, beautiful readability on light background */}
             <p className="text-slate-600 max-w-sm">
               A precise, capable engineering studio building the foundational systems that power modern businesses.
             </p>
@@ -72,7 +70,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* 🌟 CHANGED: Border color set to match the clean light layout style rules */}
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-slate-300/60 text-sm text-slate-500">
           <p>© {new Date().getFullYear()} Iriscent Technologies. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
