@@ -3,12 +3,33 @@ import { motion } from 'framer-motion';
 import { CloudShape } from '@/components/ui/CloudShape';
 
 export function Footer() {
+  // Floating animation configuration matching the theme pacing
+  const floatAnimation = (duration: number, yDelta: number, delay: number) => ({
+    animate: { y: [0, yDelta, 0] },
+    transition: { duration, repeat: Infinity, ease: "easeInOut", delay }
+  });
+
   return (
     <footer className="relative bg-background pt-32 pb-12 overflow-hidden border-t border-border/50">
-      {/* Decorative tiny clouds */}
-      <div className="absolute top-0 left-0 w-full h-32 pointer-events-none overflow-hidden flex justify-between opacity-30">
-        <CloudShape fill="hsl(var(--primary))" className="w-[300px] -translate-x-1/2 -translate-y-1/2" />
-        <CloudShape fill="hsl(var(--accent))" className="w-[400px] translate-x-1/3 -translate-y-1/3" />
+      
+      {/* Decorative tiny clouds - Styled to look identical to the Hero's iridescent theme */}
+      <div className="absolute top-0 left-0 w-full h-32 pointer-events-none overflow-hidden flex justify-between opacity-40 z-0">
+        
+        {/* Left Side Floating Rainbow Cloud */}
+        <motion.div 
+          className="w-[300px] -translate-x-1/2 -translate-y-1/2 blur-[2px]"
+          {...floatAnimation(6, -8, 0)}
+        >
+          <CloudShape fill="url(#footer-rainbow-gradient)" className="w-full h-full" />
+        </motion.div>
+        
+        {/* Right Side Floating Rainbow Cloud */}
+        <motion.div 
+          className="w-[400px] translate-x-1/3 -translate-y-1/3 blur-[3px]"
+          {...floatAnimation(7, 10, 1)}
+        >
+          <CloudShape fill="url(#footer-rainbow-gradient)" className="w-full h-full" />
+        </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -40,6 +61,17 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Embedded SVG Rainbow Gradient Definition */}
+      <svg style={{ position: 'absolute', width: 0, height: 0, pointerEvents: 'none' }} xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="footer-rainbow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#a855f7" />   {/* Purple */}
+            <stop offset="50%" stopColor="#ec4899" />  {/* Pink */}
+            <stop offset="100%" stopColor="#06b6d4" /> {/* Cyan/Teal */}
+          </linearGradient>
+        </defs>
+      </svg>
     </footer>
   );
 }
