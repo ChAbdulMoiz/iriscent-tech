@@ -12,23 +12,36 @@ export function Footer() {
   return (
     <footer className="relative bg-background pt-32 pb-12 overflow-hidden border-t border-border/50">
       
-      {/* Decorative tiny clouds - Styled to look identical to the Hero's iridescent theme */}
-      <div className="absolute top-0 left-0 w-full h-32 pointer-events-none overflow-hidden flex justify-between opacity-40 z-0">
+      {/* 🌟 Background Ambient Orb Layer (Mix of Light Purple and Pink matching the Hero center) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[30vw] rounded-full blur-[100px] opacity-40 bg-gradient-to-r from-primary/30 via-accent/40 to-secondary/20 pointer-events-none z-0" />
+
+      {/* Decorative tiny clouds - Transparent with a Rainbow Outline */}
+      <div className="absolute top-0 left-0 w-full h-32 pointer-events-none overflow-hidden flex justify-between opacity-60 z-0">
         
-        {/* Left Side Floating Rainbow Cloud */}
+        {/* Left Side Transparent Rainbow Cloud */}
         <motion.div 
-          className="w-[300px] -translate-x-1/2 -translate-y-1/2 blur-[2px]"
+          className="w-[300px] -translate-x-1/2 -translate-y-1/2"
           {...floatAnimation(6, -8, 0)}
         >
-          <CloudShape fill="url(#footer-rainbow-gradient)" className="w-full h-full" />
+          <CloudShape 
+            fill="none" 
+            stroke="url(#footer-rainbow-gradient)" 
+            strokeWidth={2} 
+            className="w-full h-full" 
+          />
         </motion.div>
         
-        {/* Right Side Floating Rainbow Cloud */}
+        {/* Right Side Transparent Rainbow Cloud */}
         <motion.div 
-          className="w-[400px] translate-x-1/3 -translate-y-1/3 blur-[3px]"
+          className="w-[400px] translate-x-1/3 -translate-y-1/3"
           {...floatAnimation(7, 10, 1)}
         >
-          <CloudShape fill="url(#footer-rainbow-gradient)" className="w-full h-full" />
+          <CloudShape 
+            fill="none" 
+            stroke="url(#footer-rainbow-gradient)" 
+            strokeWidth={2} 
+            className="w-full h-full" 
+          />
         </motion.div>
       </div>
 
