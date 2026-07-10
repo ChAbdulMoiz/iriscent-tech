@@ -60,14 +60,17 @@ export function StartProject() {
                     key={service}
                     type="button"
                     onClick={() => toggleService(service)}
-                    className={`px-5 py-3 rounded-full border text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                    className={`px-5 py-3 rounded-full border text-sm font-medium transition-all duration-300 flex items-center gap-2 relative overflow-hidden ${
                       isSelected 
-                        ? 'bg-primary text-white border-primary shadow-md transform -translate-y-1' 
+                        ? 'text-white border-transparent shadow-md transform -translate-y-1' 
                         : 'bg-white text-foreground border-border hover:border-primary/50 hover:bg-primary/5'
                     }`}
+                    style={isSelected ? {
+                      background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #06b6d4 100%)'
+                    } : {}}
                   >
-                    {isSelected && <Check className="w-4 h-4" />}
-                    {service}
+                    {isSelected && <Check className="w-4 h-4 z-10" />}
+                    <span className="relative z-10">{service}</span>
                   </button>
                 );
               })}
@@ -76,22 +79,20 @@ export function StartProject() {
 
           {/* Checkout/Order Form (Right Column) */}
           <div className="lg:col-span-5">
-            <div className="glass-card rounded-[2rem] p-8 relative overflow-hidden">
-              {/* Decorative blur */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-[80px] -z-10" />
+            <div className="glass-card rounded-[2rem] p-8 relative overflow-hidden bg-white/80 border border-border/50 shadow-sm">
+              {/* Decorative background blur orb */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[80px] -z-10" />
               
               <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-full bg-secondary/30 text-secondary-foreground flex items-center justify-center text-sm">2</span>
                 Order Details
               </h3>
 
-              {/* Founder: REPLACE THIS EMAIL WITH YOUR ACTUAL EMAIL ADDRESS */}
               <form 
                 action="https://formsubmit.co/moiz04697@gmail.com" 
                 method="POST"
                 className="flex flex-col gap-6"
               >
-                {/* FormSubmit Configuration */}
                 <input type="hidden" name="_subject" value="New Project Inquiry - Iriscent Tech" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
