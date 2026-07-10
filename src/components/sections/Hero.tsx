@@ -3,6 +3,19 @@ import { motion } from 'framer-motion';
 import { CloudShape } from '@/components/ui/CloudShape';
 
 export function Hero() {
+  // Define a gentle floating animation configuration
+  const floatAnimation = (delay: number) => ({
+    animate: {
+      y: [0, -12, 0],
+    },
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut",
+      delay: delay
+    }
+  });
+
   return (
     <section 
       className="relative h-screen w-full overflow-hidden bg-background"
@@ -11,8 +24,8 @@ export function Hero() {
         {/* Background gradient orb */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] rounded-full blur-[120px] opacity-50 bg-gradient-to-tr from-primary/40 via-accent/40 to-secondary/40 pointer-events-none" />
 
-        {/* Wordmark (Centered and completely clear of the clouds) */}
-        <div className="relative z-0 text-center px-4">
+        {/* Wordmark - CHANGED z-index to z-20 so it sits perfectly ABOVE the clouds */}
+        <div className="relative z-20 text-center px-4 pointer-events-none">
           <motion.h1 
             className="text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tight text-foreground"
             initial={{ scale: 0.95, opacity: 0 }}
@@ -31,48 +44,60 @@ export function Hero() {
           </motion.p>
         </div>
 
-        {/* Foreground Clouds - Moved outward to the edges and made semi-transparent */}
+        {/* Foreground Clouds - Kept at z-10 so they remain behind the text now */}
         <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center opacity-80">
           
           {/* Left Side Top Cloud */}
-          <div className="absolute left-[-45%] md:left-[-25%] top-[-10%] w-[120vw] md:w-[60vw] h-[70vh]">
+          <motion.div 
+            className="absolute left-[-45%] md:left-[-25%] top-[-10%] w-[120vw] md:w-[60vw] h-[70vh]"
+            {...floatAnimation(0)}
+          >
             {/* Rainbow Outline */}
             <div className="absolute inset-0 scale-[1.81] translate-x-12 blur-[3px] opacity-90">
               <CloudShape fill="url(#iriscent-rainbow)" className="w-full h-full" />
             </div>
             {/* Main Cloud */}
             <CloudShape fill="hsl(var(--background))" opacity={0.85} className="w-full h-full scale-[1.8] drop-shadow-2xl translate-x-12" />
-          </div>
+          </motion.div>
 
           {/* Left Side Bottom Cloud */}
-          <div className="absolute left-[-50%] md:left-[-30%] bottom-[-10%] w-[130vw] md:w-[60vw] h-[70vh]">
+          <motion.div 
+            className="absolute left-[-50%] md:left-[-30%] bottom-[-10%] w-[130vw] md:w-[60vw] h-[70vh]"
+            {...floatAnimation(1.5)}
+          >
             {/* Rainbow Outline */}
             <div className="absolute inset-0 scale-[2.01] translate-x-24 blur-[3px] opacity-90">
               <CloudShape fill="url(#iriscent-rainbow)" className="w-full h-full" />
             </div>
             {/* Main Cloud */}
             <CloudShape fill="hsl(var(--background))" opacity={0.85} className="w-full h-full scale-[2] drop-shadow-2xl translate-x-24" />
-          </div>
+          </motion.div>
 
           {/* Right Side Top Cloud */}
-          <div className="absolute right-[-45%] md:right-[-25%] top-[0%] w-[120vw] md:w-[60vw] h-[70vh]">
+          <motion.div 
+            className="absolute right-[-45%] md:right-[-25%] top-[0%] w-[120vw] md:w-[60vw] h-[70vh]"
+            {...floatAnimation(0.7)}
+          >
             {/* Rainbow Outline */}
             <div className="absolute inset-0 scale-[1.81] -translate-x-12 rotate-[10deg] blur-[3px] opacity-90">
               <CloudShape fill="url(#iriscent-rainbow)" className="w-full h-full" />
             </div>
             {/* Main Cloud */}
             <CloudShape fill="hsl(var(--background))" opacity={0.85} className="w-full h-full scale-[1.8] drop-shadow-2xl -translate-x-12 rotate-[10deg]" />
-          </div>
+          </motion.div>
 
           {/* Right Side Bottom Cloud */}
-          <div className="absolute right-[-50%] md:right-[-30%] bottom-[-5%] w-[130vw] md:w-[60vw] h-[70vh]">
+          <motion.div 
+            className="absolute right-[-50%] md:right-[-30%] bottom-[-5%] w-[130vw] md:w-[60vw] h-[70vh]"
+            {...floatAnimation(2.2)}
+          >
             {/* Rainbow Outline */}
             <div className="absolute inset-0 scale-[2.01] -translate-x-24 -rotate-[5deg] blur-[3px] opacity-90">
               <CloudShape fill="url(#iriscent-rainbow)" className="w-full h-full" />
             </div>
             {/* Main Cloud */}
             <CloudShape fill="hsl(var(--background))" opacity={0.85} className="w-full h-full scale-[2] drop-shadow-2xl -translate-x-24 -rotate-[5deg]" />
-          </div>
+          </motion.div>
 
         </div>
       </div>
