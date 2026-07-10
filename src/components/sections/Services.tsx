@@ -4,25 +4,21 @@ import { Code2, Cpu, Sparkles, TrendingUp } from 'lucide-react';
 
 const pillars = [
   {
-    number: "01",
     title: "Custom Software & Engineering",
     icon: <Code2 className="w-6 h-6" />,
     description: "Custom web apps, SaaS platforms, enterprise software, native & cross-platform mobile apps (Flutter, React Native), ERP/CRM implementations, Fintech & e-commerce architectures.",
   },
   {
-    number: "02",
     title: "Emerging Technologies",
     icon: <Cpu className="w-6 h-6" />,
     description: "AI/ML (generative AI, predictive analytics, chatbots, fraud detection), Cloud & DevOps (CI/CD, AWS/Azure/GCP migrations), Blockchain & Web3 (smart contracts, dApps), AR/VR & IoT.",
   },
   {
-    number: "03",
     title: "Design & Quality",
     icon: <Sparkles className="w-6 h-6" />,
     description: "UI/UX design and research, QA (automated testing, performance diagnostics, cybersecurity audits). Crafting interfaces that feel as good as they function.",
   },
   {
-    number: "04",
     title: "Strategy & Growth",
     icon: <TrendingUp className="w-6 h-6" />,
     description: "Digital marketing (SEO, PPC, social), IT staff augmentation (dedicated offshore developers), BPO services (technical support, live chat). Scaling your vision beyond code.",
@@ -63,7 +59,7 @@ export function Services() {
               transition={{ delay: idx * 0.1 }}
               className="p-10 rounded-[2rem] bg-white/50 border border-border/50 relative overflow-hidden transition-all duration-500 ease-out group hover:-translate-y-2 hover:shadow-xl"
             >
-              {/* Rainbow Border Border Overlay Layer */}
+              {/* Rainbow Border Frame on Hover */}
               <div 
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[2rem] p-[1.5px]"
                 style={{
@@ -74,40 +70,37 @@ export function Services() {
                 }}
               />
 
-              <div className="flex justify-between items-start mb-8">
-                {/* Icon Wrapper matching the active theme color map */}
+              {/* Icon Container (Keeps logo perfectly visible with a soft gradient shift) */}
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-8 relative text-muted-foreground">
                 <div 
-                  className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center transition-all duration-500"
-                  style={{ stroke: 'url(#services-rainbow)' }}
-                >
-                  <div className="text-muted-foreground group-hover:text-transparent transition-colors duration-300 relative">
-                    <div 
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100"
-                      style={{
-                        background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent'
-                      }}
-                    >
-                      {pillar.icon}
-                    </div>
-                    {pillar.icon}
-                  </div>
-                </div>
-
-                {/* Micro Number display that turns rainbow on hover */}
-                <span 
-                  className="text-4xl font-bold font-mono text-muted-foreground/30 transition-all duration-500 group-hover:text-transparent"
+                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
-                    background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #06b6d4 100%)',
-                    WebkitBackgroundClip: 'text'
+                    background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
                   }}
                 >
-                  {pillar.number}
-                </span>
+                  {pillar.icon}
+                </div>
+                <div className="group-hover:opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                  {pillar.icon}
+                </div>
               </div>
 
-              <h3 className="text-2xl font-bold mb-4 group-hover:text-foreground transition-colors duration-300">{pillar.title}</h3>
+              {/* Title Heading with Looping Live Rainbow Animation on Card Hover */}
+              <h3 
+                className="text-2xl font-bold mb-4 bg-size-200 bg-left transition-all duration-500 text-foreground group-hover:text-transparent"
+                style={{
+                  background: 'linear-gradient(90deg, #a855f7, #ec4899, #06b6d4, #a855f7)',
+                  backgroundSize: '300% 100%',
+                  WebkitBackgroundClip: 'text',
+                }}
+              >
+                <span className="group-hover:animate-rainbow-flow block">
+                  {pillar.title}
+                </span>
+              </h3>
+
               <p className="text-muted-foreground leading-relaxed text-lg">
                 {pillar.description}
               </p>
@@ -115,6 +108,17 @@ export function Services() {
           ))}
         </div>
       </div>
+
+      {/* Global CSS Injector to run the live infinite rainbow movement loop */}
+      <style>{`
+        @keyframes rainbowFlow {
+          0% { background-position: 0% 50%; }
+          100% { background-position: 300% 50%; }
+        }
+        .group:hover .group-hover\\:animate-rainbow-flow {
+          animation: rainbowFlow 4s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }
